@@ -33,22 +33,21 @@ public class SubscriptionController {
 	
 	@PostMapping("/create-subscription")
 	public SubscriptionMaster createSubscription(@RequestBody SubscriptionMaster subscription) throws Exception {
-		System.out.println(subscription.getEmail());
-		  SubscriptionMaster sub = this.createSubscriptionService.createSubscription(subscription);
-		  return sub;
+		
+		return this.createSubscriptionService.createSubscription(subscription);
+		  
 	}
 	
 	@PutMapping("/complete-subscription/{email}")
-	public ResponseEntity<?>  completeSubscription(@PathVariable("email")  String email) throws RazorpayException {
-		System.out.println("suddd"+email);
-		  SubscriptionMaster subscription = this.createSubscriptionService.completeSubscription(email);
-		  return ResponseEntity.ok(subscription);
+	public SubscriptionMaster  completeSubscription(@PathVariable("email")  String email) throws RazorpayException {
+		
+		  return this.createSubscriptionService.completeSubscription(email);
+		  
 	}
 	
 	@PutMapping("/cancle-subscription/{email}")
-	public ResponseEntity<?>  cancleSubscription(@PathVariable("email")  String email) throws RazorpayException {
-		System.out.println("suddd"+email);
-		  SubscriptionMaster subscription = this.createSubscriptionService.cancleSubscription(email);
-		  return ResponseEntity.ok(subscription);
+	public SubscriptionMaster cancleSubscription(@PathVariable("email")  String email) throws RazorpayException {
+		return this.createSubscriptionService.cancleSubscription(email);
+		   
 	}
 }

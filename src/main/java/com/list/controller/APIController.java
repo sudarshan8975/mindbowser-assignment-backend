@@ -20,7 +20,7 @@ public class APIController {
 	public ResponseEntity<?> saveUser(@Valid @RequestBody Registration registration, BindingResult bindingResult) {
 		String retVal = null;
 		if(bindingResult.hasErrors()) {
-			System.out.println(bindingResult.getFieldErrorCount("emialid"));
+			
 		}
 		else {
 		 retVal = this.registrationService.createUser(registration);

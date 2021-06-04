@@ -29,20 +29,20 @@ public class CreateSubscriptionServiceImpl implements CreateSubscriptionService{
 	public SubscriptionMaster createSubscription(SubscriptionMaster subscriptionMaster) throws Exception  {
 		
 		SubscriptionMaster reg = subscriptionRepository.findByEmail(subscriptionMaster.getEmail());
-		System.out.println(reg);
+		
 		if(reg==null) {
 			
 			try{
 				RazorpayClient razorpayClient=RozarpayManager.getInstance();
 				JSONObject request = new JSONObject();
-				request.put("plan_id", Constant.MonthlyPlanId);
+				request.put("plan_id", Constant.monthlyPlanId);
 				request.put("total_count", 1);
 				Subscription subscription = razorpayClient.Subscriptions.create(request);
 				JSONObject response = new JSONObject(subscription.toString());
 				subscriptionMaster.setPlanId(response.getString("plan_id"));
 				subscriptionMaster.setSubscriptionId(response.getString("id"));
 				subscriptionMaster.setSubscriptionStatus(response.getString("status"));
-				System.out.println(subscription.toString());
+				
 			}
 			 catch(RazorpayException e) {
 				  throw new Exception("problem to create subscription");

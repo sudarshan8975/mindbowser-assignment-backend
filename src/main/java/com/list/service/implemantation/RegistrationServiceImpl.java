@@ -26,23 +26,22 @@ public class RegistrationServiceImpl implements RegistrationService{
 		try {
 				reg = registrationRepository.findByEmail(registration.getEmail());
 				if(reg != null) {
-					retVal=Constant.ALREDY_EXIST;
+					retVal=Constant.alreadyExist;
 				}
 				else {
 					String pass=registration.getPassword();
 					registration.setPassword(this.bCryptPasswordEncoder.encode(pass));
 					reg=registrationRepository.save(registration);
 					if(reg != null) {
-						retVal=Constant.SUCCESS;
+						retVal=Constant.success;
 					}
 					else {
-						retVal=Constant.FAIL;
+						retVal=Constant.fail;
 					}
 				}
 			}
 		catch(Exception e) {
-			e.printStackTrace();
-			retVal=Constant.FAIL;
+			retVal=Constant.fail;
 		}
 		// TODO Auto-generated method stub
 		return retVal;
