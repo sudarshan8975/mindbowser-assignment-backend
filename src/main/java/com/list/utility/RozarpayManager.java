@@ -11,7 +11,7 @@ public class RozarpayManager
     public static RazorpayClient getInstance() throws RazorpayException
     {
         if (razorpayClient == null)
-        	 razorpayClient = new RazorpayClient("rzp_test_IN9yB9gfcsbBHv", "6KnOPpW5oQMniQxGvTC0egTo");
+        	 razorpayClient = new RazorpayClient(Constant.razorpayKeyId, Constant.razorpaySecretKey);
         return razorpayClient;
     }
 }

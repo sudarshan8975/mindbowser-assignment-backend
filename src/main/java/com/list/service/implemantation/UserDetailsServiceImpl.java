@@ -24,10 +24,6 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 		Registration reg = registrationRepository.findByEmail(email);
 		return new User(reg.getEmail(), reg.getPassword(),new ArrayList<>());
 		
-		/*
-		 * if(reg==null) { throw new UsernameNotFoundException("User Not Found"); }
-		 * System.out.println("reg--11"+reg.getEmail()); return reg;
-		 */
 	}
 
 }

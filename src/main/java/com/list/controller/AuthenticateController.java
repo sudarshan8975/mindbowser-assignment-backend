@@ -1,25 +1,18 @@
 package com.list.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.list.config.JwtUtils;
 import com.list.entity.JwtRequest;
 import com.list.entity.JwtResponse;
 import com.list.service.implemantation.UserDetailsServiceImpl;
-import com.mysql.fabric.Response;
 
 @RestController
 public class AuthenticateController {
@@ -52,7 +45,7 @@ public class AuthenticateController {
 	}
 	
 	private void authenticate(String username,String password) throws Exception {
-		Authentication authenticate=null;
+		
 		try {
 			 authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 		}

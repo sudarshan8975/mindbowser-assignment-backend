@@ -1,12 +1,8 @@
 package com.list.service.implemantation;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-import com.list.entity.Registration;
 import com.list.entity.SubscriptionMaster;
 import com.list.repository.SubscriptionRepository;
 import com.list.service.CreateSubscriptionService;
